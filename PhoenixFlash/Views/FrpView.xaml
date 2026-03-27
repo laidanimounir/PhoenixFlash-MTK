@@ -1,0 +1,34 @@
+<UserControl x:Class="PhoenixFlash.Views.FrpView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <StackPanel Margin="16">
+        <TextBlock Text="FRP BYPASS" FontSize="10"
+                   Foreground="{StaticResource BrushTextSecondary}" Margin="0,0,0,12"/>
+        <Border Background="{StaticResource BrushSurface}" BorderBrush="{StaticResource BrushWarning}"
+                BorderThickness="0.5" CornerRadius="8"
+                Padding="12" Margin="0,0,0,16">
+            <TextBlock FontSize="12" Foreground="{StaticResource BrushWarning}" TextWrapping="Wrap"
+                       Text="⚠ Utiliser uniquement sur des appareils dont vous êtes propriétaire ou avec autorisation du propriétaire."/>
+        </Border>
+        <Border Background="{StaticResource BrushBackground}" BorderBrush="{StaticResource BrushBorder}"
+                BorderThickness="0.5" CornerRadius="8"
+                Padding="12" Margin="0,0,0,8">
+            <StackPanel>
+                <TextBlock Text="ÉTAPES" FontSize="10"
+                           Foreground="{StaticResource BrushTextSecondary}" Margin="0,0,0,10"/>
+                <TextBlock Text="1.  Connecter l'appareil en mode EDL / Download"
+                           FontSize="12" Foreground="{StaticResource BrushAccent}" Margin="0,0,0,6"/>
+                <TextBlock Text="2.  Sélectionner le modèle exact dans la liste"
+                           FontSize="12" Foreground="{StaticResource BrushAccent}" Margin="0,0,0,6"/>
+                <TextBlock Text="3.  Lancer le bypass — durée estimée : 2 à 4 min"
+                           FontSize="12" Foreground="{StaticResource BrushAccent}" Margin="0,0,0,6"/>
+                <TextBlock Text="4.  Redémarrer l'appareil après l'opération"
+                           FontSize="12" Foreground="{StaticResource BrushAccent}"/>
+            </StackPanel>
+        </Border>
+        <Button Content="Lancer FRP Bypass" Click="BtnDoFrp_Click"
+                Style="{StaticResource MaterialDesignOutlinedButton}"
+                BorderBrush="{StaticResource BrushSuccess}" Foreground="{StaticResource BrushSuccess}"
+                Height="48" Margin="0,8,0,0"/>
+    </StackPanel>
+</UserControl>

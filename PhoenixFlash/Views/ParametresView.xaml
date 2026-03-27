@@ -1,0 +1,44 @@
+<UserControl x:Class="PhoenixFlash.Views.ParametresView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <StackPanel Margin="16">
+        <TextBlock Text="PARAMÈTRES" FontSize="10"
+                   Foreground="{StaticResource BrushTextSecondary}" Margin="0,0,0,12"/>
+        <Border Background="{StaticResource BrushBackground}" BorderBrush="{StaticResource BrushBorder}"
+                BorderThickness="0.5" CornerRadius="8"
+                Padding="12" Margin="0,0,0,8">
+            <Grid>
+                <TextBlock Text="Vérification avant flash"
+                           FontSize="12" Foreground="{StaticResource BrushTextPrimary}"/>
+                <CheckBox HorizontalAlignment="Right" IsChecked="True"/>
+            </Grid>
+        </Border>
+        <Border Background="{StaticResource BrushBackground}" BorderBrush="{StaticResource BrushBorder}"
+                BorderThickness="0.5" CornerRadius="8"
+                Padding="12" Margin="0,0,0,8">
+            <Grid>
+                <TextBlock Text="Sauvegarde automatique"
+                           FontSize="12" Foreground="{StaticResource BrushTextPrimary}"/>
+                <CheckBox HorizontalAlignment="Right" IsChecked="True"/>
+            </Grid>
+        </Border>
+        <Border Background="{StaticResource BrushBackground}" BorderBrush="{StaticResource BrushBorder}"
+                BorderThickness="0.5" CornerRadius="8"
+                Padding="12" Margin="0,0,0,8">
+            <Grid>
+                <TextBlock Text="Mode débogage USB"
+                           FontSize="12" Foreground="{StaticResource BrushTextPrimary}"/>
+                <CheckBox HorizontalAlignment="Right" IsChecked="False"/>
+            </Grid>
+        </Border>
+        <Border Background="{StaticResource BrushBackground}" BorderBrush="{StaticResource BrushBorder}"
+                BorderThickness="0.5" CornerRadius="8"
+                Padding="12">
+            <Grid>
+                <TextBlock Text="Alertes de sécurité"
+                           FontSize="12" Foreground="{StaticResource BrushTextPrimary}"/>
+                <CheckBox HorizontalAlignment="Right" IsChecked="True"/>
+            </Grid>
+        </Border>
+    </StackPanel>
+</UserControl>

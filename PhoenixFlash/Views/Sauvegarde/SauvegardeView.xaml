@@ -1,0 +1,131 @@
+<UserControl x:Class="PhoenixFlash.Views.Sauvegarde.SauvegardeView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:sauvegarde="clr-namespace:PhoenixFlash.Views.Sauvegarde">
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <StackPanel Margin="16">
+
+            <TextBlock Text="ANALYSE DU TÉLÉPHONE" FontSize="10"
+                       Foreground="{StaticResource BrushTextSecondary}" Margin="0,0,0,12"/>
+
+            <Button Content="Analyser le téléphone" Click="BtnAnalyser_Click"
+                    Style="{StaticResource MaterialDesignOutlinedButton}"
+                    BorderBrush="{StaticResource BrushSuccess}" Foreground="{StaticResource BrushSuccess}"
+                    Height="48" Margin="0,0,0,16"/>
+            <Button Content="Voir les photos" Click="BtnVoirPhotos_Click"
+                    Style="{StaticResource MaterialDesignOutlinedButton}"
+                    BorderBrush="{StaticResource BrushBorder}" Foreground="{StaticResource BrushAccent}"
+                    Height="48" Margin="0,0,0,16"/>
+
+            <Grid Margin="0,0,0,16">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <!-- Photos -->
+                <Border Grid.Row="0" Grid.Column="0" Background="{StaticResource BrushBackground}"
+                        BorderBrush="{StaticResource BrushBorder}" BorderThickness="0.5"
+                        CornerRadius="8" Padding="12" Margin="0,0,4,8">
+                    <StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="0,0,0,6">
+                            <CheckBox x:Name="ChkPhotos" IsChecked="True"/>
+                            <TextBlock Text="Photos" FontSize="12"
+                                       Foreground="{StaticResource BrushAccent}" Margin="8,0,0,0"/>
+                        </StackPanel>
+                        <TextBlock x:Name="TxtPhotosInfo" Text="---"
+                                   FontSize="11" Foreground="{StaticResource BrushTextSecondary}"/>
+                    </StackPanel>
+                </Border>
+
+                <!-- Contacts -->
+                <Border Grid.Row="0" Grid.Column="1" Background="{StaticResource BrushBackground}"
+                        BorderBrush="{StaticResource BrushBorder}" BorderThickness="0.5"
+                        CornerRadius="8" Padding="12" Margin="4,0,0,8">
+                    <StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="0,0,0,6">
+                            <CheckBox x:Name="ChkContacts" IsChecked="True"/>
+                            <TextBlock Text="Contacts" FontSize="12"
+                                       Foreground="{StaticResource BrushAccent}" Margin="8,0,0,0"/>
+                        </StackPanel>
+                        <TextBlock x:Name="TxtContactsInfo" Text="---"
+                                   FontSize="11" Foreground="{StaticResource BrushTextSecondary}"/>
+                    </StackPanel>
+                </Border>
+
+                <!-- SMS -->
+                <Border Grid.Row="1" Grid.Column="0" Background="{StaticResource BrushBackground}"
+                        BorderBrush="{StaticResource BrushBorder}" BorderThickness="0.5"
+                        CornerRadius="8" Padding="12" Margin="0,0,4,8">
+                    <StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="0,0,0,6">
+                            <CheckBox x:Name="ChkSms" IsChecked="False"/>
+                            <TextBlock Text="SMS" FontSize="12"
+                                       Foreground="{StaticResource BrushAccent}" Margin="8,0,0,0"/>
+                        </StackPanel>
+                        <TextBlock x:Name="TxtSmsInfo" Text="---"
+                                   FontSize="11" Foreground="{StaticResource BrushTextSecondary}"/>
+                    </StackPanel>
+                </Border>
+
+                <!-- Applications -->
+                <Border Grid.Row="1" Grid.Column="1" Background="{StaticResource BrushBackground}"
+                        BorderBrush="{StaticResource BrushBorder}" BorderThickness="0.5"
+                        CornerRadius="8" Padding="12" Margin="4,0,0,8">
+                    <StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="0,0,0,6">
+                            <CheckBox x:Name="ChkApps" IsChecked="False"/>
+                            <TextBlock Text="Applications" FontSize="12"
+                                       Foreground="{StaticResource BrushAccent}" Margin="8,0,0,0"/>
+                        </StackPanel>
+                        <TextBlock x:Name="TxtAppsInfo" Text="---"
+                                   FontSize="11" Foreground="{StaticResource BrushTextSecondary}"/>
+                    </StackPanel>
+                </Border>
+            </Grid>
+
+            <Grid Margin="0,0,0,8">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Button Grid.Column="0" Content="Backup sélection"
+                        Click="BtnBackupSelection_Click"
+                        Style="{StaticResource MaterialDesignOutlinedButton}"
+                        BorderBrush="{StaticResource BrushSuccess}" Foreground="{StaticResource BrushSuccess}"
+                        Height="48" Margin="0,0,4,0"/>
+                <Button Grid.Column="1" Content="Restore backup"
+                        Click="BtnRestore_Click"
+                        Style="{StaticResource MaterialDesignOutlinedButton}"
+                        BorderBrush="{StaticResource BrushBorder}" Foreground="{StaticResource BrushAccent}"
+                        Height="48" Margin="4,0,0,0"/>
+            </Grid>
+
+            <Button Content="Format + Flash" Click="BtnFormatFlash_Click"
+                    Style="{StaticResource MaterialDesignOutlinedButton}"
+                    BorderBrush="{StaticResource BrushWarning}" Foreground="{StaticResource BrushWarning}"
+                    Height="48"/>
+
+            <!-- ✅ FIXED: TabItems now use ContentTemplate to avoid XDG0008 errors -->
+            <TabControl Background="Transparent" BorderThickness="0" Margin="0,16,0,0">
+                <TabItem Header="Applications">
+                    <sauvegarde:AppsView />
+                </TabItem>
+                <TabItem Header="Appels">
+                    <sauvegarde:AppelsView />
+                </TabItem>
+                <TabItem Header="Contacts">
+                    <sauvegarde:ContactsView />
+                </TabItem>
+                <TabItem Header="SMS">
+                    <sauvegarde:SmsView />
+                </TabItem>
+            </TabControl>
+
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>
