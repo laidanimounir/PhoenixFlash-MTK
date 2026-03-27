@@ -1,9 +1,94 @@
 <UserControl x:Class="PhoenixFlash.Views.Sauvegarde.AppsView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <Grid Height="300">
-        <TextBlock Text="Applications — En cours de développement" 
-                   HorizontalAlignment="Center" VerticalAlignment="Center"
-                   Foreground="{StaticResource BrushTextSecondary}" FontSize="16"/>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Toolbar -->
+        <Border Grid.Row="0" Background="{StaticResource BrushSurface}"
+                BorderBrush="{StaticResource BrushBorder}" BorderThickness="0,0,0,1"
+                Padding="8,6">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0" Orientation="Horizontal">
+                    <CheckBox x:Name="ChkSelectAll" Content="Tout sélectionner"
+                              Foreground="{StaticResource BrushTextSecondary}"
+                              FontSize="11" Checked="ChkSelectAll_Changed"
+                              Unchecked="ChkSelectAll_Changed" Margin="0,0,12,0"/>
+                    <TextBlock x:Name="TxtAppCount" Text="0 applications"
+                               Foreground="{StaticResource BrushTextSecondary}" FontSize="11"
+                               VerticalAlignment="Center"/>
+                </StackPanel>
+                <Button Grid.Column="2" x:Name="BtnLoadApps" Content="↻ Charger"
+                        Click="BtnLoadApps_Click"
+                        Style="{StaticResource MaterialDesignFlatButton}"
+                        Foreground="{StaticResource BrushAccent}" FontSize="11"
+                        Height="28" Padding="8,0"/>
+            </Grid>
+        </Border>
+
+        <!-- Liste des applications -->
+        <Border Grid.Row="1" Background="{StaticResource BrushBackground}"
+                BorderBrush="{StaticResource BrushBorder}" BorderThickness="0.5"
+                CornerRadius="6" Margin="0,8,0,0">
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <ItemsControl x:Name="AppsList">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Border BorderBrush="{StaticResource BrushBorder}"
+                                    BorderThickness="0,0,0,0.5" Padding="10,8">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <CheckBox Grid.Column="0" IsChecked="{Binding IsSelected}"
+                                              VerticalAlignment="Center" Margin="0,0,10,0"/>
+                                    <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                                        <TextBlock Text="{Binding AppName}" FontSize="12"
+                                                   Foreground="{StaticResource BrushTextPrimary}"
+                                                   FontWeight="Medium"/>
+                                        <TextBlock Text="{Binding PackageName}" FontSize="10"
+                                                   Foreground="{StaticResource BrushTextSecondary}"/>
+                                    </StackPanel>
+                                    <TextBlock Grid.Column="2" Text="{Binding Size}"
+                                               FontSize="10" Foreground="{StaticResource BrushAccent}"
+                                               VerticalAlignment="Center"/>
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </ScrollViewer>
+        </Border>
+
+        <!-- Footer actions -->
+        <Grid Grid.Row="2" Margin="0,8,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0" x:Name="BtnBackupApps" Content="💾 Backup sélection"
+                    Click="BtnBackupApps_Click"
+                    Style="{StaticResource MaterialDesignOutlinedButton}"
+                    BorderBrush="{StaticResource BrushSuccess}"
+                    Foreground="{StaticResource BrushSuccess}"
+                    Height="36" Margin="0,0,4,0" FontSize="11"/>
+            <Button Grid.Column="1" x:Name="BtnRestoreApps" Content="📂 Restore .ab"
+                    Click="BtnRestoreApps_Click"
+                    Style="{StaticResource MaterialDesignOutlinedButton}"
+                    BorderBrush="{StaticResource BrushBorder}"
+                    Foreground="{StaticResource BrushAccent}"
+                    Height="36" Margin="4,0,0,0" FontSize="11"/>
+        </Grid>
     </Grid>
 </UserControl>
